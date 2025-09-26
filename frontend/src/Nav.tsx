@@ -91,19 +91,21 @@ export const Nav: React.FC = () => {
           {user ? (
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-blue-600 font-medium text-sm">
-                      {user.username.charAt(0).toUpperCase()}
-                    </span>
-                  </div>
-                  <span className="text-sm font-medium text-gray-700 hidden sm:block">
-                    {user.username}
+                <div 
+                  className="w-8 h-8 rounded-full flex items-center justify-center"
+                  style={{backgroundColor: 'var(--primary-green)'}}
+                >
+                  <span className="text-white font-medium text-sm">
+                    {user.username.charAt(0).toUpperCase()}
                   </span>
                 </div>
+                <span className="text-sm font-medium text-gray-700 hidden sm:block">
+                  {user.username}
+                </span>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-200"
+                  className="px-4 py-2 rounded-lg text-sm font-medium text-white transition duration-200 hover:opacity-90"
+                  style={{backgroundColor: 'var(--secondary-gold)'}}
                 >
                   Logout
                 </button>
