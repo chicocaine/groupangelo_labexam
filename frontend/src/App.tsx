@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './hooks/useAuth';
 import { Nav } from './Nav';
-import { AuthContainer } from './components/AuthContainer';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
 import { Homepage, About, Programs, News, Contact } from './pages';
 
 const AppContent: React.FC = () => {
@@ -21,7 +22,7 @@ const AppContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Nav />
       <Routes>
         {/* Public routes - accessible to everyone */}
@@ -34,11 +35,11 @@ const AppContent: React.FC = () => {
         {/* Authentication routes */}
         <Route 
           path="/login" 
-          element={user ? <Navigate to="/" replace /> : <AuthContainer />} 
+          element={user ? <Navigate to="/" replace /> : <Login />} 
         />
         <Route 
           path="/register" 
-          element={user ? <Navigate to="/" replace /> : <AuthContainer />} 
+          element={user ? <Navigate to="/" replace /> : <Register />} 
         />
         
         {/* Redirect unknown routes to homepage */}

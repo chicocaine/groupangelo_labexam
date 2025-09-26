@@ -21,12 +21,11 @@ export const Nav: React.FC = () => {
           {/* Logo/Brand */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+              <div className="flex items-center">
+                <img src="/ccelogo.png" alt="UM CCE Logo" className="h-8 w-8 mr-3" />
+                <h1 className="text-lg font-bold text-gray-900 hidden sm:block">COLLEGE OF COMPUTING EDUCATION</h1>
+                <h1 className="text-lg font-bold text-gray-900 sm:hidden">CCE</h1>
               </div>
-              <h1 className="ml-3 text-xl font-bold text-gray-900">College of Computing Education</h1>
             </Link>
           </div>
 
@@ -36,9 +35,10 @@ export const Nav: React.FC = () => {
               to="/" 
               className={`px-3 py-2 rounded-md text-sm font-medium transition duration-200 ${
                 isActivePage('/') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-green-700 bg-green-50' 
+                  : 'text-gray-700 hover:text-green-600'
               }`}
+              style={{color: isActivePage('/') ? 'var(--primary-green)' : undefined}}
             >
               Home
             </Link>
@@ -46,8 +46,8 @@ export const Nav: React.FC = () => {
               to="/about" 
               className={`px-3 py-2 rounded-md text-sm font-medium transition duration-200 ${
                 isActivePage('/about') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-green-700 bg-green-50' 
+                  : 'text-gray-700 hover:text-green-600'
               }`}
             >
               About
@@ -56,9 +56,10 @@ export const Nav: React.FC = () => {
               to="/programs" 
               className={`px-3 py-2 rounded-md text-sm font-medium transition duration-200 ${
                 isActivePage('/programs') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-green-700 bg-green-50' 
+                  : 'text-gray-700 hover:text-green-600'
               }`}
+              style={{color: isActivePage('/programs') ? 'var(--primary-green)' : undefined}}
             >
               Programs
             </Link>
@@ -66,9 +67,10 @@ export const Nav: React.FC = () => {
               to="/news" 
               className={`px-3 py-2 rounded-md text-sm font-medium transition duration-200 ${
                 isActivePage('/news') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-green-700 bg-green-50' 
+                  : 'text-gray-700 hover:text-green-600'
               }`}
+              style={{color: isActivePage('/news') ? 'var(--primary-green)' : undefined}}
             >
               News & Events
             </Link>
@@ -76,9 +78,10 @@ export const Nav: React.FC = () => {
               to="/contact" 
               className={`px-3 py-2 rounded-md text-sm font-medium transition duration-200 ${
                 isActivePage('/contact') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-green-700 bg-green-50' 
+                  : 'text-gray-700 hover:text-green-600'
               }`}
+              style={{color: isActivePage('/contact') ? 'var(--primary-green)' : undefined}}
             >
               Contact
             </Link>
@@ -110,15 +113,16 @@ export const Nav: React.FC = () => {
             <div className="flex items-center space-x-4">
               <Link
                 to="/login"
-                className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-200"
+                className="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition duration-200"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-white transition duration-200 hover:opacity-90"
+                style={{backgroundColor: 'var(--primary-green)'}}
               >
-                Sign Up
+                Register
               </Link>
             </div>
           )}
@@ -132,29 +136,21 @@ export const Nav: React.FC = () => {
             to="/" 
             className={`block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
               isActivePage('/') 
-                ? 'text-blue-600 bg-blue-50' 
-                : 'text-gray-700 hover:text-blue-600'
+                ? 'text-green-700 bg-green-50' 
+                : 'text-gray-700 hover:text-green-600'
             }`}
+            style={{color: isActivePage('/') ? 'var(--primary-green)' : undefined}}
           >
             Home
-          </Link>
-          <Link 
-            to="/about" 
-            className={`block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
-              isActivePage('/about') 
-                ? 'text-blue-600 bg-blue-50' 
-                : 'text-gray-700 hover:text-blue-600'
-            }`}
-          >
-            About
           </Link>
           <Link 
             to="/programs" 
             className={`block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
               isActivePage('/programs') 
-                ? 'text-blue-600 bg-blue-50' 
-                : 'text-gray-700 hover:text-blue-600'
+                ? 'text-green-700 bg-green-50' 
+                : 'text-gray-700 hover:text-green-600'
             }`}
+            style={{color: isActivePage('/programs') ? 'var(--primary-green)' : undefined}}
           >
             Programs
           </Link>
@@ -162,21 +158,23 @@ export const Nav: React.FC = () => {
             to="/news" 
             className={`block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
               isActivePage('/news') 
-                ? 'text-blue-600 bg-blue-50' 
-                : 'text-gray-700 hover:text-blue-600'
+                ? 'text-green-700 bg-green-50' 
+                : 'text-gray-700 hover:text-green-600'
             }`}
+            style={{color: isActivePage('/news') ? 'var(--primary-green)' : undefined}}
           >
-            News & Events
+            Events
           </Link>
           <Link 
             to="/contact" 
             className={`block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
               isActivePage('/contact') 
-                ? 'text-blue-600 bg-blue-50' 
-                : 'text-gray-700 hover:text-blue-600'
+                ? 'text-green-700 bg-green-50' 
+                : 'text-gray-700 hover:text-green-600'
             }`}
+            style={{color: isActivePage('/contact') ? 'var(--primary-green)' : undefined}}
           >
-            Contact
+            Contact Us
           </Link>
         </div>
       </div>
