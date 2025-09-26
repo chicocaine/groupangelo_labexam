@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
-interface LoginFormProps {
-  onSwitchToRegister: () => void;
-}
-
-export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
+export const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { login, error, clearError } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +16,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
     }
 
     setIsSubmitting(true);
-    await login(username, password);
+    const success = await login(username, password);
+    if (success) {
+      navigate('/');
+    }
     setIsSubmitting(false);
   };
 
@@ -89,13 +90,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
       <div className="mt-4 text-center">
         <p className="text-sm text-gray-600">
           Don't have an account?{' '}
-          <button
-            type="button"
-            onClick={onSwitchToRegister}
+          <Link
+            to="/register"
             className="text-blue-500 hover:text-blue-700 font-medium focus:outline-none focus:underline"
           >
             Sign up here
-          </button>
+          </Link>
         </p>
       </div>
     </div>

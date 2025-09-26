@@ -1,9 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './hooks/useAuth';
 import { Nav } from './Nav';
-import { Dashboard } from './components/Dashboard';
 import { AuthContainer } from './components/AuthContainer';
+import { Homepage, About, Programs, News, Contact } from './pages';
 
 const AppContent: React.FC = () => {
   const { user, isLoading } = useAuth();
@@ -22,7 +23,27 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Nav />
-      {user ? <Dashboard /> : <AuthContainer />}
+      <Routes>
+        {/* Public routes - accessible to everyone */}
+        <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/programs" element={<Programs />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/contact" element={<Contact />} />
+        
+        {/* Authentication routes */}
+        <Route 
+          path="/login" 
+          element={user ? <Navigate to="/" replace /> : <AuthContainer />} 
+        />
+        <Route 
+          path="/register" 
+          element={user ? <Navigate to="/" replace /> : <AuthContainer />} 
+        />
+        
+        {/* Redirect unknown routes to homepage */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 };
@@ -30,7 +51,9 @@ const AppContent: React.FC = () => {
 export default function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <Router>
+        <AppContent />
+      </Router>
     </AuthProvider>
   );
 }

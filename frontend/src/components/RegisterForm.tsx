@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
-interface RegisterFormProps {
-  onSwitchToLogin: () => void;
-}
-
-export const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
+export const RegisterForm: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationError, setValidationError] = useState('');
   const { register, error, clearError } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +40,10 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) =
     }
 
     setIsSubmitting(true);
-    await register(username, password);
+    const success = await register(username, password);
+    if (success) {
+      navigate('/');
+    }
     setIsSubmitting(false);
   };
 
@@ -137,13 +138,12 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) =
       <div className="mt-4 text-center">
         <p className="text-sm text-gray-600">
           Already have an account?{' '}
-          <button
-            type="button"
-            onClick={onSwitchToLogin}
+          <Link
+            to="/login"
             className="text-green-500 hover:text-green-700 font-medium focus:outline-none focus:underline"
           >
             Sign in here
-          </button>
+          </Link>
         </p>
       </div>
     </div>

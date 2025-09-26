@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { LoginForm } from './LoginForm';
 import { RegisterForm } from './RegisterForm';
 
 export const AuthContainer: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const location = useLocation();
+  const isLogin = location.pathname === '/login';
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       {isLogin ? (
-        <LoginForm onSwitchToRegister={() => setIsLogin(false)} />
+        <LoginForm />
       ) : (
-        <RegisterForm onSwitchToLogin={() => setIsLogin(true)} />
+        <RegisterForm />
       )}
     </div>
   );
