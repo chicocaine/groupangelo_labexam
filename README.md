@@ -1,20 +1,12 @@
-# College of Computing Education Website
+# University of Mindanao - College of Computing Education Website
 
-This website has been transformed from a simple authentication-only application into a comprehensive college website for the College of Computing Education.
+## Laboratory Examination Project - GROUPANGELO
 
-## Features
+### Members:
+- **Eduard Anthony C. Pechayco**
+- **Dranreb Jay B. Arzadon**
 
-### Public Access (No Registration Required)
-- **Homepage**: Welcome page with college overview, statistics, and highlights
-- **About**: College mission, vision, history, leadership team, and core values
-- **Academic Programs**: Detailed information about undergraduate and graduate programs, plus career opportunities
-- **News & Events**: Latest news, upcoming events, and newsletter signup
-- **Contact & Visit**: Contact information, campus visit options, and department contacts
-
-### Optional User Authentication
-- Users can browse the entire website without registering
-- Optional registration and login for access to personalized dashboard
-- Authentication is handled via backend PHP API
+**Objective**: The objective of this laboratory examination is to enable the students to apply web scripting languages in creating a functional, menu-driven web application. Specifically, the activity aims to develop the ability to design a creative landing page that reflects a chosen theme.
 
 ## Technology Stack
 
@@ -25,10 +17,16 @@ This website has been transformed from a simple authentication-only application 
 - Vite for development and building
 
 ### Backend  
-- PHP authentication API
-- JSON file storage for user data
+- **PHP 8+** authentication API with session management
+- **JSON file storage** for user data persistence
+- **CORS support** for cross-origin requests
 
 ## Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+- PHP 8+ with web server (Apache/Nginx)
+- Modern web browser
 
 ### Frontend Development
 ```bash
@@ -38,28 +36,42 @@ npm run dev
 ```
 
 ### Backend Setup
-The backend PHP files are located in the `backend/` directory and need to be served by a web server with PHP support.
+1. Place the `backend/` directory in your web server's document root
+2. Ensure PHP has write permissions to `backend/users.json`
+3. Configure CORS if needed for development
+
+### Build for Production
+```bash
+cd frontend
+npm run build
+```
+
+## Project Architecture
+
+### Component Structure
+- **Pages**: Complete page components (Homepage, About, Programs, News, Contact, Login, Register)
+- **Navigation**: Responsive navigation with conditional rendering
+- **Contexts**: Authentication context for state management
+- **Hooks**: Custom hooks for authentication logic
 
 ## Project Structure
 
 ```
 ├── README.md
 ├── backend/
-│   ├── auth.php          # Authentication API
-│   └── users.json        # User storage
+│   ├── auth.php          # Authentication API endpoints
+│   └── users.json        # User data storage
 └── frontend/
+    ├── public/
+    │   ├── logo.png      # UM CCE official logo
+    │   └── vite.svg      # Vite favicon
     ├── src/
-    │   ├── components/    # Reusable components
-    │   ├── contexts/      # React contexts (Auth)
-    │   ├── hooks/         # Custom React hooks
-    │   └── pages/         # Page components
+    │   ├── contexts/     # React contexts (Authentication)
+    │   ├── hooks/        # Custom React hooks (useAuth)
+    │   ├── pages/        # Page components (Homepage, About, etc.)
+    │   ├── assets/       # Static assets and images
+    │   ├── App.tsx       # Main app component with routing
+    │   ├── Nav.tsx       # Navigation component
+    │   └── main.tsx      # App entry point
     └── ...
 ```
-
-## Navigation
-- All pages are accessible without authentication
-- Login/Register buttons appear in navigation for non-authenticated users
-- Authenticated users see their profile and logout option
-- Mobile-responsive navigation menu
-
-The website successfully balances public accessibility with optional user features, making it suitable for prospective students, current students, faculty, and visitors.
